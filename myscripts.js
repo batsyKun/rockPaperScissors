@@ -5,56 +5,65 @@ function getComputerChoice () {
 }
 function game(playSelection, computerSelection) {
  if(playSelection == computerSelection) {
-    return "Its a draw."
- }
+    win.textContent = "Draw"
+}
  else if(playSelection == "rock") {
     if(computerSelection == "paper")  {
         pcScore++;
-        return "+1 point for PC"
+        win.textContent = "ROBOT WIN"
+
+      //  return "w"
     }
     if(computerSelection == "scissors") {
         yourScore++ ;
 
-        return "+1 point for you";
+        win.textContent = "WE WIN"
     }
 }
 else if(playSelection == "paper") {
     if(computerSelection == "scissors") {
         pcScore++;
 
-        return "+1 point for PC";
+        win.textContent = "ROBOT WIN"
     }
     if(computerSelection == "rock"){
         yourScore++
 
-        return "+1 point for you"
+        win.textContent = "WE WIN"
 }
     } 
 else if(playSelection == "scissors") {
     if(computerSelection == "paper"){
         pcScore++;
 
-        return "+1 point for PC";
+        win.textContent = "ROBOT WIN"
     } 
     if(computerSelection == "rock") {
         yourScore++;
-        return "+1 point for you";
+        win.textContent = "WE WIN"
     }
 }
-else {
-    return "incorrect tool"
+
+score.textContent = `${yourScore}  -   ${pcScore}`
+
 }
-}
+
+
+
 
 let yourScore = 0;
 let pcScore = 0;
-while(yourScore < 5 && pcScore < 5) {
-    let playSelection = prompt("message").toLowerCase();
-    let computerSelection = getComputerChoice();
-    console.log(game(playSelection, computerSelection));
+let playSelection = ""
+
+let rock = document.getElementById("rck");
+let paper = document.getElementById("ppr");
+let scissors = document.getElementById("scis");
+let score = document.getElementById("score");
+let win = document.getElementById("win");
+let result = document.getElementById("result");
 
 
-}
-console.log(`Your score: ${yourScore}`)
-console.log(`PC score: ${pcScore}`)
 
+    rock.addEventListener("click", () => game("rock", getComputerChoice()));
+    paper.addEventListener("click", () => game("paper", getComputerChoice()));
+    scissors.addEventListener("click", () => game("scissors", getComputerChoice()));
