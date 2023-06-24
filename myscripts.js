@@ -12,29 +12,29 @@ function getComputerChoice() {
     } else if (playSelection === "rock") {
       if (computerSelection === "paper") {
         pcScore++;
-        win.textContent = "VADER WIN";
+        win.textContent = `Paper beat Rock`;
       }
       if (computerSelection === "scissors") {
         yourScore++;
-        win.textContent = "YOU WIN";
+        win.textContent = "You beat scissors with rock";
       }
     } else if (playSelection === "paper") {
       if (computerSelection === "scissors") {
         pcScore++;
-        win.textContent = "VADER WIN";
+        win.textContent = "PC got the better over your paper with scissors";
       }
       if (computerSelection === "rock") {
         yourScore++;
-        win.textContent = "YOU WIN";
+        win.textContent = "Your paper covered the rock!";
       }
     } else if (playSelection === "scissors") {
-      if (computerSelection === "paper") {
-        pcScore++;
-        win.textContent = "VADER WIN";
-      }
       if (computerSelection === "rock") {
+        pcScore++;
+        win.textContent = "Your scissors got destroyed by rock";
+      }
+      if (computerSelection === "paper") {
         yourScore++;
-        win.textContent = "YOU WIN";
+        win.textContent = "You defeated the paper with scissors";
       }
     }
   
@@ -43,22 +43,30 @@ function getComputerChoice() {
     // Check if either player or computer has reached a score of 5
     if (yourScore === 5 || pcScore === 5) {
       // Stop the game
-      rock.removeEventListener("click", handleRockClick);
-      paper.removeEventListener("click", handlePaperClick);
-      scissors.removeEventListener("click", handleScissorsClick);
-      result.textContent = yourScore === 5 ? "YOU WON THE GAME!" : "VADER WON THE GAME!";
+      rockBtn.removeEventListener("click", handleRockClick);
+      paperBtn.removeEventListener("click", handlePaperClick);
+      scissorsBtn.removeEventListener("click", handleScissorsClick);
+      rockImg.removeEventListener("click", handleRockClick);
+      paperImg.removeEventListener("click", handlePaperClick);
+      scissorsImg.removeEventListener("click", handleScissorsClick);
+      
+      result.textContent = yourScore === 5 ? "CONGRATS! YOU WON THE GAME!" : "PC WON THE GAME! BETTER LUCK NEXT TIME.";
     }
   }
   
   let yourScore = 0;
   let pcScore = 0;
   
-  let rock = document.getElementById("rck");
-  let paper = document.getElementById("ppr");
-  let scissors = document.getElementById("scis");
+  let rockBtn = document.getElementById("rck");
+  let paperBtn = document.getElementById("ppr");
+  let scissorsBtn = document.getElementById("scis");
+  let rockImg = document.getElementById("rockImg");
+  let paperImg = document.getElementById("paperImg");
+  let scissorsImg = document.getElementById("scissorsImg")
   let score = document.getElementById("score");
   let win = document.getElementById("win");
   let result = document.getElementById("result");
+
   
   function handleRockClick() {
     game("rock", getComputerChoice());
@@ -74,7 +82,12 @@ function getComputerChoice() {
   
 
   //listens for players choice
-  rock.addEventListener("click", handleRockClick);
-  paper.addEventListener("click", handlePaperClick);
-  scissors.addEventListener("click", handleScissorsClick);
+  
+  rockBtn.addEventListener("click", handleRockClick);
+  paperBtn.addEventListener("click", handlePaperClick);
+  scissorsBtn.addEventListener("click", handleScissorsClick);
+
+  rockImg.addEventListener("click", handleRockClick);
+  paperImg.addEventListener("click", handlePaperClick);
+  scissorsImg.addEventListener("click", handleScissorsClick);
   
