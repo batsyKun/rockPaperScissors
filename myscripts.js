@@ -57,7 +57,6 @@ function getComputerChoice() {
   
   let yourScore = 0;
   let pcScore = 0;
-  
   let rockBtn = document.getElementById("rck");
   let paperBtn = document.getElementById("ppr");
   let scissorsBtn = document.getElementById("scis");
@@ -81,19 +80,17 @@ function getComputerChoice() {
     game("scissors", getComputerChoice());
   }
   
-
-  //listens for players choice
+//creating play again button
   const btn = document.createElement("button");
   const buttonTxt = document.createTextNode("Play Again?");
   const scoreBoard = document.getElementById("scoreBoard");
   btn.classList.add("playAgain");
   btn.appendChild(buttonTxt);
   scoreBoard.appendChild(btn);
-  // btn.style.display = "none";
 
   
 
-
+//activates the eventlisteners
   function runGame(){
     rockBtn.addEventListener("click", handleRockClick);
     paperBtn.addEventListener("click", handlePaperClick);
@@ -106,7 +103,8 @@ function getComputerChoice() {
   btn.style.visibility = 'hidden';
 
   btn.addEventListener("click", playAgainn)
-  
+
+  //play again fuction
   function playAgainn(){
     win.textContent = "";
     result.textContent = ""
