@@ -49,7 +49,8 @@ function getComputerChoice() {
       rockImg.removeEventListener("click", handleRockClick);
       paperImg.removeEventListener("click", handlePaperClick);
       scissorsImg.removeEventListener("click", handleScissorsClick);
-      
+      btn.style.visibility = 'visible';
+
       result.textContent = yourScore === 5 ? "CONGRATS! YOU WON THE GAME!" : "PC WON THE GAME! BETTER LUCK NEXT TIME.";
     }
   }
@@ -82,12 +83,35 @@ function getComputerChoice() {
   
 
   //listens for players choice
-  
-  rockBtn.addEventListener("click", handleRockClick);
-  paperBtn.addEventListener("click", handlePaperClick);
-  scissorsBtn.addEventListener("click", handleScissorsClick);
+  const btn = document.createElement("button");
+  const buttonTxt = document.createTextNode("Play Again?");
+  const scoreBoard = document.getElementById("scoreBoard");
+  btn.classList.add("playAgain");
+  btn.appendChild(buttonTxt);
+  scoreBoard.appendChild(btn);
+  // btn.style.display = "none";
 
-  rockImg.addEventListener("click", handleRockClick);
-  paperImg.addEventListener("click", handlePaperClick);
-  scissorsImg.addEventListener("click", handleScissorsClick);
   
+
+
+  function runGame(){
+    rockBtn.addEventListener("click", handleRockClick);
+    paperBtn.addEventListener("click", handlePaperClick);
+    scissorsBtn.addEventListener("click", handleScissorsClick);
+    rockImg.addEventListener("click", handleRockClick);
+    paperImg.addEventListener("click", handlePaperClick);
+    scissorsImg.addEventListener("click", handleScissorsClick);
+  }
+  runGame();
+  btn.style.visibility = 'hidden';
+
+  btn.addEventListener("click", playAgainn)
+  function playAgainn(){
+    win.textContent = "";
+    result.textContent = ""
+    yourScore = 0;
+    pcScore = 0;
+    score.textContent = `${yourScore} - ${pcScore}`;
+    runGame();
+    btn.style.visibility = 'hidden';
+  }

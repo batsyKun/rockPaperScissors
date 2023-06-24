@@ -9,6 +9,7 @@ body {
 .mainGame{
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 .weapon{
     width: 50%;
@@ -75,7 +76,9 @@ button{
     position: relative;
     top: -50px; 
   }
-  #playAgain{
+  .playAgain{
     position: relative;
-    top: 220px; 
+    top: 5px;
+    visibility: hidden;
+
   }
