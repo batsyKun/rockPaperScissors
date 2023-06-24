@@ -106,6 +106,7 @@ function getComputerChoice() {
   btn.style.visibility = 'hidden';
 
   btn.addEventListener("click", playAgainn)
+  
   function playAgainn(){
     win.textContent = "";
     result.textContent = ""
